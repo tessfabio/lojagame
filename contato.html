@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - The GameHub</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  
+  <header>
+    <div class="caixa">
+      <h1><img src="imagens/logo.png" alt="Logo The GameHub"></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="titulo-principal-produtos">Entre em Contato</h2>
+
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Dados Pessoais</legend>
+
+        <label for="nomesobrenome">Nome e sobrenome *</label>
+        <input type="text" id="nomesobrenome" name="nome"
+               class="input-padrao" required
+               placeholder="Seu nome completo">
+
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email"
+               class="input-padrao" required
+               placeholder="seuemail@dominio.com">
+
+        <label for="telefone">Telefone *</label>
+        <input type="tel" id="telefone" name="telefone"
+               class="input-padrao" required
+               placeholder="(XX) XXXXX-XXXX">
+      </fieldset>
+
+      <fieldset>
+        <legend>Mensagem</legend>
+        <label for="mensagem">Como podemos ajudar? *</label>
+        <textarea cols="70" rows="8" id="mensagem" name="mensagem"
+                  class="input-padrao" required
+                  placeholder="Descreva como podemos ajudá-lo..."></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>Como prefere nosso contato?</legend>
+        <label class="radio-label">
+          <input type="radio" name="contato" value="email" id="radio-email">
+          <span class="radio-custom"></span>
+          Email
+        </label>
+
+        <label class="radio-label">
+          <input type="radio" name="contato" value="telefone" id="radio-telefone">
+          <span class="radio-custom"></span>
+          Telefone
+        </label>
+
+        <label class="radio-label">
+          <input type="radio" name="contato" value="whatsapp" id="radio-whatsapp" checked>
+          <span class="radio-custom"></span>
+          WhatsApp
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Preferência de horário</legend>
+        <label for="horario">Qual horário prefere ser atendido?</label>
+        <select id="horario" name="horario" class="input-padrao">
+          <option value="">Selecione um horário</option>
+          <option value="manha">Manhã (8h às 12h)</option>
+          <option value="tarde">Tarde (12h às 18h)</option>
+          <option value="noite">Noite (18h às 22h)</option>
+          <option value="qualquer">Qualquer horário</option>
+        </select>
+      </fieldset>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="newsletter" value="sim">
+        <span class="checkbox-custom"></span>
+        Gostaria de receber nossas novidades por email?
+      </label>
+
+      <input type="submit" value="Enviar Mensagem" class="enviar">
+    </form>
+
+    <section class="informacoes-contato">
+      <h3>Outras formas de contato</h3>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <h4>Endereço</h4>
+          <p>Rua Gamer, 123<br>
+          Centro - Cascavel/PR<br>
+          CEP: 85800-000</p>
+        </div>
+
+        <div class="info-item">
+          <h4>Telefones</h4>
+          <p>Fixo: (45) 3333-4444<br>
+          WhatsApp: (45) 99999-8888<br>
+          Email: contato@thegamehub.com.br</p>
+        </div>
+      </div>
+
+      <table class="horarios">
+        <caption>Horários de Funcionamento</caption>
+        <thead>
+          <tr>
+            <th>Dia da Semana</th>
+            <th>Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Segunda a Sexta</td>
+            <td>08h às 18h</td>
+          </tr>
+          <tr>
+            <td>Sábado</td>
+            <td>08h às 14h</td>
+          </tr>
+          <tr>
+            <td>Domingo</td>
+            <td>Fechado</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <img src="imagens/logo-branco.png" alt="Logo The GameHub">
+    <p class="copyright">&copy; Copyright The GameHub - 2025</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
