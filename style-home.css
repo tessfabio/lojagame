@@ -203,3 +203,57 @@ nav a:hover { background: rgba(0,0,0,0.06); }
   overflow: hidden; clip: rect(0,0,0,0);
   white-space: nowrap; border: 0;
 }
+
+/* ===== HOME: header centralizado e logo dimensionado ===== */
+.titulo-principal{
+  /* deixa o nome visível, elegante e sem exagero */
+  font-size: clamp(22px, 3vw, 32px);
+  letter-spacing: .5px;      /* era 2px; fica mais legível */
+  margin-bottom: 8px;
+}
+
+/* A caixa do header vira coluna e centraliza tudo na home */
+header .caixa{
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;    /* logo e menu um embaixo do outro */
+  align-items: center;
+  gap: 12px;
+}
+
+/* Tamanho do logo (maior, mas controlado e responsivo) */
+header .logo{
+  max-height: 140px;         /* ajuste fino aqui se quiser maior/menor */
+  width: auto;
+  display: block;
+}
+
+/* Centraliza o menu na home (aproveitando base do style.css) */
+header nav ul{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Banner menos “gigante” e mais responsivo */
+#banner{
+  width: 100%;
+  height: clamp(180px, 40vh, 340px);   /* antes era fixo em 400px */
+  object-fit: cover;
+  display: block;
+}
+
+/* Tipografia geral um pouco mais “suave” */
+body{
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mobile: ajusta logo e título */
+@media (max-width: 768px){
+  header .logo{ max-height: 100px; }
+  .titulo-principal{ font-size: clamp(20px, 5vw, 28px); }
+}
+
