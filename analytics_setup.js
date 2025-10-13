@@ -2,7 +2,7 @@
 
 class AnalyticsManager {
     constructor() {
-        this.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // SUBSTITUA pelo seu ID do GA4
+        this.GA_MEASUREMENT_ID = 'G-MWSZPN3GD0'; // SUBSTITUA pelo seu ID do GA4
         this.isInitialized = false;
         this.events = [];
         
