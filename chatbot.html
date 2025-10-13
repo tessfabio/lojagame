@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!-- WIDGET DO CHATBOT - Adicionar antes do </body> em todas as páginas -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos / Serviços - The GameHub</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="chatbot.css">
-    <link rel="stylesheet" href="style-galeria.css">
-    <link rel="stylesheet" href="dark-mode.css">
-    <link rel="stylesheet" href="cookie_consent.css">
-
-    <div class="chat-widget">
+<!-- Botão Flutuante do Chat -->
+<div class="chat-widget">
     <div class="chat-button" id="chatButton">
         <svg class="chat-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
@@ -28,10 +17,10 @@
         <!-- Header do Chat -->
         <div class="chat-header">
             <div class="chat-avatar">
-                <img src="imagens/logo-branco1.png" alt="Assistente">
+                <img src="imagens/logo.png" alt="Assistente">
             </div>
             <div class="chat-info">
-                <h4>The GameHub</h4>
+                <h4>[NOME DO NEGÓCIO]</h4>
                 <span class="chat-status online">Online agora</span>
             </div>
             <div class="chat-actions">
@@ -44,10 +33,10 @@
         <div class="chat-messages" id="chatMessages">
             <div class="message bot-message">
                 <div class="message-avatar">
-                    <img src="imagens/logo-branco1.png" alt="Bot">
+                    <img src="imagens/logo.png" alt="Bot">
                 </div>
                 <div class="message-content">
-                    <p>Olá! 👋 Sou o assistente virtual da The GameHub. Como posso ajudá-lo hoje?</p>
+                    <p>Olá! 👋 Sou o assistente virtual da [NOME DO NEGÓCIO]. Como posso ajudá-lo hoje?</p>
                     <span class="message-time">Agora</span>
                 </div>
             </div>
@@ -94,67 +83,3 @@
         </div>
     </div>
 </div>
-</head>
-
-
-<body>
-    <header>
-        <div class="caixa">
-            <h1>
-                <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
-            </h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><a href="galeria.html">Galeria</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <h2 class="titulo-principal-produtos">Nossos Produtos / Serviços</h2>
-
-        <ul class="produtos">
-            <li>
-                <h3>Cyber Junkies</h3>
-                <img src="imagens/produto1.png" alt="[PRODUTO 1]">
-                <p class="produto-descricao">Cyber Junkies: um shooter frenético em um futuro caótico, onde só os
-                    viciados em ação sobrevivem.</p>
-                <p class="produto-preco">R$ 350,00</p>
-            </li>
-
-            <li>
-                <h3>Dark Reign</h3>
-                <img src="imagens/produto2.jpg" alt="[PRODUTO 2]">
-                <p class="produto-descricao">Dark Reign: um soulslike sombrio em um reino arruinado, onde cada batalha é
-                    uma luta pela sobrevivência.</p>
-                <p class="produto-preco">R$ 375,00</p>
-            </li>
-
-            <li>
-                <h3>Astrophobia</h3>
-                <img src="imagens/produto3.jpg" alt="[PRODUTO 3]">
-                <p class="produto-descricao">Astrophobia: um mergulho no horror cósmico, onde o espaço revela medos além
-                    da compreensão humana</p>
-                <p class="produto-preco">R$ 390,00</p>
-            </li>
-        </ul>
-    </main>
-
-    <footer>
-        <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
-        <p class="copyright">&copy; Copyright The GameHub - 2025</p>
-        <a href="faq-section.html">Perguntas Frequentes</a>
-    </footer>
-    <script src="script.js"></script>
-    <script src="dark-mode.js"></script>
-    <script src="chatbot.js"></script>
-    <script src="analytics_setup.js"></script>
-
-</body>
-
-</html>

@@ -33,6 +33,13 @@ header {
   border-bottom: 3px solid #333;
 }
 
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px 0;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
 /* Linha do topo (logo + nav). Se não usar nav, mantém só o título/logo. */
 header .caixa {
   display: flex;
@@ -69,7 +76,7 @@ nav ul {
 }
 
 nav a {
-  color: #333;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   padding: 8px 10px;
