@@ -385,4 +385,4 @@ function getAnalyticsReport() {
 
 // Export para módulos
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { AnalyticsManager, trackCustomEvent };
+    module.exports = { AnalyticsManager, trackCustomEvent };}
