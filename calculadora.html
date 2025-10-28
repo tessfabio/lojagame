@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora - The GameHub</title>
+    
+    <!-- CSS do Projeto -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="calculadora.css">
+    <link rel="stylesheet" href="dark-mode.css">
+    <link rel="stylesheet" href="chatbot.css">
+    
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="caixa">
+            <h1><img src="imagens/logo-branco1.png" alt="Logo [SEU NEGÓCIO]"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="mapa.html">Localização</a></li>
+                    
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2 class="titulo-principal-produtos">Calculadora Interativa</h2>
+
+        <!-- Seletor de Tipo de Calculadora -->
+        <div class="tipo-calculadora-selector">
+            <button class="tipo-btn active" data-tipo="imc">Calculadora de IMC</button>
+            <button class="tipo-btn" data-tipo="calorias">Gasto Calórico</button>
+            <button class="tipo-btn" data-tipo="personalizado">Personalizado</button>
+        </div>
+
+        <!-- Container Principal -->
+        <div class="calculadora-container">
+            <!-- Painel de Entrada -->
+            <div class="calculadora-inputs" id="calculadoraInputs">
+                <!-- CALCULADORA IMC -->
+                <div class="calc-section active" data-section="imc">
+                    <h3>Calculadora de IMC (Índice de Massa Corporal)</h3>
+                    <p class="calc-descricao">Descubra se seu peso está adequado para sua altura</p>
+
+                    <div class="input-group">
+                        <label for="peso">Peso (kg)</label>
+                        <input type="number" id="peso" placeholder="Ex: 70" min="20" max="300" step="0.1">
+                        <span class="input-hint">Digite seu peso em quilogramas</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="altura">Altura (cm)</label>
+                        <input type="number" id="altura" placeholder="Ex: 170" min="100" max="250" step="1">
+                        <span class="input-hint">Digite sua altura em centímetros</span>
+                    </div>
+
+                    <button class="btn-calcular" onclick="calcularIMC()">Calcular IMC</button>
+                </div>
+
+                <!-- CALCULADORA DE CALORIAS -->
+                <div class="calc-section" data-section="calorias">
+                    <h3>Calculadora de Gasto Calórico</h3>
+                    <p class="calc-descricao">Calcule quantas calorias você gasta por dia</p>
+
+                    <div class="input-group">
+                        <label for="peso-cal">Peso (kg)</label>
+                        <input type="number" id="peso-cal" placeholder="Ex: 70" min="20" max="300" step="0.1">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="altura-cal">Altura (cm)</label>
+                        <input type="number" id="altura-cal" placeholder="Ex: 170" min="100" max="250" step="1">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="idade">Idade (anos)</label>
+                        <input type="number" id="idade" placeholder="Ex: 30" min="10" max="120" step="1">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="sexo">Sexo</label>
+                        <select id="sexo">
+                            <option value="">Selecione</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="atividade">Nível de Atividade Física</label>
+                        <select id="atividade">
+                            <option value="1.2">Sedentário (pouco ou nenhum exercício)</option>
+                            <option value="1.375">Levemente ativo (1-3 dias/semana)</option>
+                            <option value="1.55" selected>Moderadamente ativo (3-5 dias/semana)</option>
+                            <option value="1.725">Muito ativo (6-7 dias/semana)</option>
+                            <option value="1.9">Extremamente ativo (treino 2x/dia)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-calcular" onclick="calcularCalorias()">Calcular Calorias</button>
+                </div>
+
+                <!-- CALCULADORA PERSONALIZADA -->
+                <div class="calc-section" data-section="personalizado">
+                    <h3>Calculadora Personalizada</h3>
+                    <p class="calc-descricao">Adapte para seu negócio específico</p>
+
+                    <div class="personalizacao-info">
+                        <h4>Exemplos de Uso:</h4>
+                        <ul>
+                            <li><strong>Pet Shop:</strong> Quantidade de ração por peso do animal</li>
+                            <li><strong>Restaurante:</strong> Calculadora de gorjeta</li>
+                            <li><strong>Loja:</strong> Calculadora de desconto</li>
+                            <li><strong>Consultoria:</strong> Estimativa de orçamento</li>
+                        </ul>
+                    </div>
+
+                    <!-- EXEMPLO: Pet Shop - Quantidade de Ração -->
+                    <div id="calc-personalizada">
+                        <h4>Calculadora de Ração (Pet Shop)</h4>
+                        
+                        <div class="input-group">
+                            <label for="peso-pet">Peso do Pet (kg)</label>
+                            <input type="number" id="peso-pet" placeholder="Ex: 15" min="0.5" max="100" step="0.5">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="idade-pet">Idade do Pet</label>
+                            <select id="idade-pet">
+                                <option value="filhote">Filhote (0-1 ano)</option>
+                                <option value="adulto" selected>Adulto (1-7 anos)</option>
+                                <option value="senior">Idoso (7+ anos)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="atividade-pet">Nível de Atividade</label>
+                            <select id="atividade-pet">
+                                <option value="baixa">Baixa (sedentário)</option>
+                                <option value="moderada" selected>Moderada (passeios regulares)</option>
+                                <option value="alta">Alta (muito ativo)</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-calcular" onclick="calcularRacao()">Calcular Quantidade</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Painel de Resultados -->
+            <div class="calculadora-resultados" id="calculadoraResultados">
+                <div class="placeholder-resultado">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="calc-icon">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                    <h3>Aguardando Cálculo</h3>
+                    <p>Preencha os campos e clique em calcular para ver os resultados</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Informações Educativas -->
+        <section class="info-educativa">
+            <h3>Entenda os Cálculos</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">📊</div>
+                    <h4>IMC (Índice de Massa Corporal)</h4>
+                    <p>Fórmula: <strong>IMC = peso ÷ (altura)²</strong></p>
+                    <p>Medida que relaciona peso e altura para avaliar se uma pessoa está no peso ideal.</p>
+                    <ul class="info-list">
+                        <li>Abaixo de 18,5: Abaixo do peso</li>
+                        <li>18,5 - 24,9: Peso normal</li>
+                        <li>25,0 - 29,9: Sobrepeso</li>
+                        <li>30,0+: Obesidade</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🔥</div>
+                    <h4>Taxa Metabólica Basal (TMB)</h4>
+                    <p>Calorias necessárias para manter funções vitais em repouso.</p>
+                    <p><strong>Homens:</strong> 88,362 + (13,397 × peso) + (4,799 × altura) - (5,677 × idade)</p>
+                    <p><strong>Mulheres:</strong> 447,593 + (9,247 × peso) + (3,098 × altura) - (4,330 × idade)</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">💡</div>
+                    <h4>Dicas Importantes</h4>
+                    <ul class="info-list">
+                        <li>Estes cálculos são estimativas gerais</li>
+                        <li>Consulte um profissional para orientação personalizada</li>
+                        <li>Resultados variam conforme metabolismo individual</li>
+                        <li>Use como referência, não diagnóstico</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Histórico de Cálculos -->
+        <section class="historico-calculos">
+            <div class="historico-header">
+                <h3>Histórico de Cálculos</h3>
+                <button class="btn-limpar-historico" onclick="limparHistorico()">Limpar Histórico</button>
+            </div>
+            <div id="historicoLista" class="historico-lista">
+                <p class="historico-vazio">Nenhum cálculo realizado ainda</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
+        <p class="copyright">&copy; Copyright The GameHub - 2025</p>
+    </footer>
+
+    <!-- Script da Calculadora -->
+   
+    <script src="dark-mode.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="analytics_setup.js"></script>
+    
+    
+</body>
+</html>
