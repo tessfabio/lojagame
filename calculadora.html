@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora - The GameHub</title>
+    <title>Calculadora de Descontos - The GameHub</title>
     
     <!-- CSS do Projeto -->
     <link rel="stylesheet" href="reset.css">
@@ -11,210 +11,233 @@
     <link rel="stylesheet" href="calculadora.css">
     <link rel="stylesheet" href="dark-mode.css">
     <link rel="stylesheet" href="chatbot.css">
-    
-    <!-- Chart.js para gráficos -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <div class="chat-widget">
+    <div class="chat-button" id="chatButton">
+        <svg class="chat-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+        </svg>
+        <svg class="close-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+        <span class="chat-badge" id="chatBadge">1</span>
+    </div>
+
+    <!-- Janela do Chat -->
+    <div class="chat-window" id="chatWindow">
+        <!-- Header do Chat -->
+        <div class="chat-header">
+            <div class="chat-avatar">
+                <img src="imagens/logo-branco1.png" alt="Assistente">
+            </div>
+            <div class="chat-info">
+                <h4>The GameHub</h4>
+                <span class="chat-status online">Online agora</span>
+            </div>
+            <div class="chat-actions">
+                <button class="minimize-btn" id="minimizeChat">−</button>
+                <button class="close-chat-btn" id="closeChatBtn">×</button>
+            </div>
+        </div>
+
+        <!-- Área de Mensagens -->
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">
+                    <img src="imagens/logo-branco1.png" alt="Bot">
+                </div>
+                <div class="message-content">
+                    <p>Olá! 👋 Sou o assistente virtual da The GameHub. Como posso ajudá-lo hoje?</p>
+                    <span class="message-time">Agora</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sugestões Rápidas -->
+        <div class="quick-suggestions" id="quickSuggestions">
+            <button class="suggestion-btn" data-suggestion="horarios">📅 Horários</button>
+            <button class="suggestion-btn" data-suggestion="servicos">💼 Serviços</button>
+            <button class="suggestion-btn" data-suggestion="contato">📞 Contato</button>
+            <button class="suggestion-btn" data-suggestion="localizacao">📍 Localização</button>
+        </div>
+
+        <!-- Área de Input -->
+        <div class="chat-input-area">
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Digite sua mensagem..." maxlength="500">
+                <button class="send-btn" id="sendBtn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="chat-footer">
+                <span class="typing-indicator" id="typingIndicator" style="display: none;">
+                    <span></span><span></span><span></span>
+                    Digitando...
+                </span>
+                <button class="whatsapp-btn" id="whatsappBtn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.53 3.488"/>
+                    </svg>
+                    Continuar no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificação de Nova Mensagem -->
+    <div class="chat-notification" id="chatNotification" style="display: none;">
+        <div class="notification-content">
+            <strong>Nova mensagem!</strong>
+            <p>O assistente respondeu sua pergunta</p>
+        </div>
+    </div>
+</div>
 </head>
 <body>
     <header>
         <div class="caixa">
-            <h1><img src="imagens/logo-branco1.png" alt="Logo [SEU NEGÓCIO]"></h1>
+            <h1>
+                <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
+            </h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
                     <li><a href="galeria.html">Galeria</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="mapa.html">Localização</a></li>
-                    
-                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="agendamento.html">Agendar</a></li>
+                    <li><a href="calculadora.html" class="ativo">Calculadora</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <h2 class="titulo-principal-produtos">Calculadora Interativa</h2>
+        <h2 class="titulo-principal-produtos">Calculadora de Descontos</h2>
 
-        <!-- Seletor de Tipo de Calculadora -->
-        <div class="tipo-calculadora-selector">
-            <button class="tipo-btn active" data-tipo="imc">Calculadora de IMC</button>
-            <button class="tipo-btn" data-tipo="calorias">Gasto Calórico</button>
-            <button class="tipo-btn" data-tipo="personalizado">Personalizado</button>
-        </div>
+        <p style="text-align:center; max-width: 800px; margin: 0 auto 30px; color: #ccc;">
+            Use esta calculadora para saber quanto você realmente vai pagar em um produto com desconto
+            — perfeito para comparar promoções de jogos, consoles e periféricos aqui na The GameHub. 🎮
+        </p>
 
         <!-- Container Principal -->
         <div class="calculadora-container">
             <!-- Painel de Entrada -->
-            <div class="calculadora-inputs" id="calculadoraInputs">
-                <!-- CALCULADORA IMC -->
-                <div class="calc-section active" data-section="imc">
-                    <h3>Calculadora de IMC (Índice de Massa Corporal)</h3>
-                    <p class="calc-descricao">Descubra se seu peso está adequado para sua altura</p>
+            <div class="calculadora-inputs">
+                <div class="calc-section active">
+                    <h3>Insira os dados da oferta</h3>
+                    <p class="calc-descricao">
+                        Informe o preço original do produto e o percentual de desconto autorizado.
+                    </p>
 
                     <div class="input-group">
-                        <label for="peso">Peso (kg)</label>
-                        <input type="number" id="peso" placeholder="Ex: 70" min="20" max="300" step="0.1">
-                        <span class="input-hint">Digite seu peso em quilogramas</span>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="altura">Altura (cm)</label>
-                        <input type="number" id="altura" placeholder="Ex: 170" min="100" max="250" step="1">
-                        <span class="input-hint">Digite sua altura em centímetros</span>
-                    </div>
-
-                    <button class="btn-calcular" onclick="calcularIMC()">Calcular IMC</button>
-                </div>
-
-                <!-- CALCULADORA DE CALORIAS -->
-                <div class="calc-section" data-section="calorias">
-                    <h3>Calculadora de Gasto Calórico</h3>
-                    <p class="calc-descricao">Calcule quantas calorias você gasta por dia</p>
-
-                    <div class="input-group">
-                        <label for="peso-cal">Peso (kg)</label>
-                        <input type="number" id="peso-cal" placeholder="Ex: 70" min="20" max="300" step="0.1">
+                        <label for="preco-original">Preço original (R$)</label>
+                        <input type="number" id="preco-original" placeholder="Ex: 299,90" min="0" step="0.01">
+                        <span class="input-hint">Valor sem desconto, como aparece na etiqueta / anúncio.</span>
                     </div>
 
                     <div class="input-group">
-                        <label for="altura-cal">Altura (cm)</label>
-                        <input type="number" id="altura-cal" placeholder="Ex: 170" min="100" max="250" step="1">
+                        <label for="percentual-desconto">Percentual de desconto (%)</label>
+                        <input type="number" id="percentual-desconto" placeholder="Ex: 15" min="0" max="100" step="0.1">
+                        <span class="input-hint">Informe apenas o número. Exemplo: para 15% digite <strong>15</strong>.</span>
                     </div>
 
                     <div class="input-group">
-                        <label for="idade">Idade (anos)</label>
-                        <input type="number" id="idade" placeholder="Ex: 30" min="10" max="120" step="1">
+                        <label for="desconto-extra">Desconto extra (cupom) (%) <span style="font-weight: normal; color: #aaa;">(opcional)</span></label>
+                        <input type="number" id="desconto-extra" placeholder="Ex: 5" min="0" max="100" step="0.1">
+                        <span class="input-hint">Use se houver cupom adicional aplicado sobre o valor já com desconto.</span>
                     </div>
 
-                    <div class="input-group">
-                        <label for="sexo">Sexo</label>
-                        <select id="sexo">
-                            <option value="">Selecione</option>
-                            <option value="masculino">Masculino</option>
-                            <option value="feminino">Feminino</option>
-                        </select>
-                    </div>
+                    <button class="btn-calcular" onclick="calcularDesconto()">Calcular desconto</button>
 
-                    <div class="input-group">
-                        <label for="atividade">Nível de Atividade Física</label>
-                        <select id="atividade">
-                            <option value="1.2">Sedentário (pouco ou nenhum exercício)</option>
-                            <option value="1.375">Levemente ativo (1-3 dias/semana)</option>
-                            <option value="1.55" selected>Moderadamente ativo (3-5 dias/semana)</option>
-                            <option value="1.725">Muito ativo (6-7 dias/semana)</option>
-                            <option value="1.9">Extremamente ativo (treino 2x/dia)</option>
-                        </select>
-                    </div>
-
-                    <button class="btn-calcular" onclick="calcularCalorias()">Calcular Calorias</button>
-                </div>
-
-                <!-- CALCULADORA PERSONALIZADA -->
-                <div class="calc-section" data-section="personalizado">
-                    <h3>Calculadora Personalizada</h3>
-                    <p class="calc-descricao">Adapte para seu negócio específico</p>
-
-                    <div class="personalizacao-info">
-                        <h4>Exemplos de Uso:</h4>
-                        <ul>
-                            <li><strong>Pet Shop:</strong> Quantidade de ração por peso do animal</li>
-                            <li><strong>Restaurante:</strong> Calculadora de gorjeta</li>
-                            <li><strong>Loja:</strong> Calculadora de desconto</li>
-                            <li><strong>Consultoria:</strong> Estimativa de orçamento</li>
-                        </ul>
-                    </div>
-
-                    <!-- EXEMPLO: Pet Shop - Quantidade de Ração -->
-                    <div id="calc-personalizada">
-                        <h4>Calculadora de Ração (Pet Shop)</h4>
-                        
-                        <div class="input-group">
-                            <label for="peso-pet">Peso do Pet (kg)</label>
-                            <input type="number" id="peso-pet" placeholder="Ex: 15" min="0.5" max="100" step="0.5">
-                        </div>
-
-                        <div class="input-group">
-                            <label for="idade-pet">Idade do Pet</label>
-                            <select id="idade-pet">
-                                <option value="filhote">Filhote (0-1 ano)</option>
-                                <option value="adulto" selected>Adulto (1-7 anos)</option>
-                                <option value="senior">Idoso (7+ anos)</option>
-                            </select>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="atividade-pet">Nível de Atividade</label>
-                            <select id="atividade-pet">
-                                <option value="baixa">Baixa (sedentário)</option>
-                                <option value="moderada" selected>Moderada (passeios regulares)</option>
-                                <option value="alta">Alta (muito ativo)</option>
-                            </select>
-                        </div>
-
-                        <button class="btn-calcular" onclick="calcularRacao()">Calcular Quantidade</button>
-                    </div>
+                    <p id="mensagem-erro" style="margin-top: 10px; color: #ff6b6b; display: none;">
+                        Verifique os valores informados. O preço deve ser maior que 0 e o desconto entre 0% e 100%.
+                    </p>
                 </div>
             </div>
 
             <!-- Painel de Resultados -->
             <div class="calculadora-resultados" id="calculadoraResultados">
-                <div class="placeholder-resultado">
+                <div class="placeholder-resultado" id="placeholderResultado">
                     <svg viewBox="0 0 24 24" fill="currentColor" class="calc-icon">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
                     </svg>
-                    <h3>Aguardando Cálculo</h3>
-                    <p>Preencha os campos e clique em calcular para ver os resultados</p>
+                    <h3>Aguardando cálculo</h3>
+                    <p>Preencha os campos ao lado e clique em <strong>Calcular desconto</strong> para ver o resultado.</p>
+                </div>
+
+                <div class="resultado-detalhado" id="resultadoDetalhado" style="display:none;">
+                    <h3>Resultado do desconto</h3>
+
+                    <div class="resultado-grid">
+                        <div class="resultado-card">
+                            <span class="resultado-label">Preço original</span>
+                            <span class="resultado-valor" id="res-preco-original">R$ 0,00</span>
+                        </div>
+
+                        <div class="resultado-card">
+                            <span class="resultado-label">Desconto aplicado</span>
+                            <span class="resultado-valor" id="res-desconto-total">0%</span>
+                            <small id="res-detalhe-descontos"></small>
+                        </div>
+
+                        <div class="resultado-card">
+                            <span class="resultado-label">Valor de desconto</span>
+                            <span class="resultado-valor destaque" id="res-valor-desconto">R$ 0,00</span>
+                        </div>
+
+                        <div class="resultado-card principal">
+                            <span class="resultado-label">Preço final</span>
+                            <span class="resultado-valor destaque" id="res-preco-final">R$ 0,00</span>
+                        </div>
+
+                        <div class="resultado-card">
+                            <span class="resultado-label">Você economizou</span>
+                            <span class="resultado-valor" id="res-economia">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <p class="resultado-observacao" id="res-observacao"></p>
                 </div>
             </div>
         </div>
 
         <!-- Seção de Informações Educativas -->
         <section class="info-educativa">
-            <h3>Entenda os Cálculos</h3>
+            <h3>Como o desconto é calculado?</h3>
             <div class="info-grid">
                 <div class="info-card">
-                    <div class="info-icon">📊</div>
-                    <h4>IMC (Índice de Massa Corporal)</h4>
-                    <p>Fórmula: <strong>IMC = peso ÷ (altura)²</strong></p>
-                    <p>Medida que relaciona peso e altura para avaliar se uma pessoa está no peso ideal.</p>
+                    <div class="info-icon">💸</div>
+                    <h4>Fórmula básica</h4>
+                    <p>Usamos a seguinte fórmula:</p>
+                    <p><strong>Preço final = Preço original × (1 − Desconto/100)</strong></p>
+                    <p>Exemplo: um jogo de R$ 200,00 com 20% de desconto fica:</p>
+                    <p><strong>R$ 200,00 × (1 − 0,20) = R$ 160,00</strong></p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🎮</div>
+                    <h4>Comparando promoções</h4>
                     <ul class="info-list">
-                        <li>Abaixo de 18,5: Abaixo do peso</li>
-                        <li>18,5 - 24,9: Peso normal</li>
-                        <li>25,0 - 29,9: Sobrepeso</li>
-                        <li>30,0+: Obesidade</li>
+                        <li>Use a calculadora para comparar preços entre lojas.</li>
+                        <li>Veja quanto um cupom extra realmente reduz o valor.</li>
+                        <li>Descubra se vale a pena esperar uma promoção maior.</li>
                     </ul>
                 </div>
 
                 <div class="info-card">
-                    <div class="info-icon">🔥</div>
-                    <h4>Taxa Metabólica Basal (TMB)</h4>
-                    <p>Calorias necessárias para manter funções vitais em repouso.</p>
-                    <p><strong>Homens:</strong> 88,362 + (13,397 × peso) + (4,799 × altura) - (5,677 × idade)</p>
-                    <p><strong>Mulheres:</strong> 447,593 + (9,247 × peso) + (3,098 × altura) - (4,330 × idade)</p>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">💡</div>
-                    <h4>Dicas Importantes</h4>
+                    <div class="info-icon">⚠️</div>
+                    <h4>Fique atento</h4>
                     <ul class="info-list">
-                        <li>Estes cálculos são estimativas gerais</li>
-                        <li>Consulte um profissional para orientação personalizada</li>
-                        <li>Resultados variam conforme metabolismo individual</li>
-                        <li>Use como referência, não diagnóstico</li>
+                        <li>Algumas lojas aplicam o desconto sobre um preço “de tabela” mais alto.</li>
+                        <li>Sempre confira o valor final antes de fechar a compra.</li>
+                        <li>Frete e taxas não estão incluídos nesse cálculo.</li>
                     </ul>
                 </div>
-            </div>
-        </section>
-
-        <!-- Histórico de Cálculos -->
-        <section class="historico-calculos">
-            <div class="historico-header">
-                <h3>Histórico de Cálculos</h3>
-                <button class="btn-limpar-historico" onclick="limparHistorico()">Limpar Histórico</button>
-            </div>
-            <div id="historicoLista" class="historico-lista">
-                <p class="historico-vazio">Nenhum cálculo realizado ainda</p>
             </div>
         </section>
     </main>
@@ -222,14 +245,80 @@
     <footer>
         <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
         <p class="copyright">&copy; Copyright The GameHub - 2025</p>
+        <a href="faq-section.html">Perguntas Frequentes</a>
     </footer>
 
-    <!-- Script da Calculadora -->
-   
+    <!-- Scripts do site -->
+    <script>
+        function formatarMoeda(valor) {
+            if (isNaN(valor)) return "R$ 0,00";
+            return valor.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+        }
+
+        function calcularDesconto() {
+            const precoOriginalInput = document.getElementById('preco-original');
+            const percentualInput = document.getElementById('percentual-desconto');
+            const extraInput = document.getElementById('desconto-extra');
+            const erro = document.getElementById('mensagem-erro');
+
+            const precoOriginal = parseFloat(precoOriginalInput.value.replace(',', '.'));
+            const percentual = parseFloat(percentualInput.value.replace(',', '.'));
+            const extra = extraInput.value ? parseFloat(extraInput.value.replace(',', '.')) : 0;
+
+            if (
+                isNaN(precoOriginal) || precoOriginal <= 0 ||
+                isNaN(percentual) || percentual < 0 || percentual > 100 ||
+                extra < 0 || extra > 100
+            ) {
+                erro.style.display = 'block';
+                document.getElementById('resultadoDetalhado').style.display = 'none';
+                document.getElementById('placeholderResultado').style.display = 'flex';
+                return;
+            }
+
+            erro.style.display = 'none';
+
+            // Desconto total combinando desconto principal + extra (aplicado em cascata)
+            const valorDescontoPrincipal = precoOriginal * (percentual / 100);
+            const precoComDesconto = precoOriginal - valorDescontoPrincipal;
+
+            let valorDescontoExtra = 0;
+            if (extra > 0) {
+                valorDescontoExtra = precoComDesconto * (extra / 100);
+            }
+
+            const valorTotalDesconto = valorDescontoPrincipal + valorDescontoExtra;
+            const precoFinal = precoOriginal - valorTotalDesconto;
+
+            const descontoTotalEfetivo = (valorTotalDesconto / precoOriginal) * 100;
+
+            // Atualiza resultados
+            document.getElementById('res-preco-original').textContent = formatarMoeda(precoOriginal);
+            document.getElementById('res-desconto-total').textContent = descontoTotalEfetivo.toFixed(1).replace('.', ',') + '%';
+            document.getElementById('res-valor-desconto').textContent = formatarMoeda(valorTotalDesconto);
+            document.getElementById('res-preco-final').textContent = formatarMoeda(precoFinal);
+            document.getElementById('res-economia').textContent = formatarMoeda(valorTotalDesconto);
+
+            const detalhe = document.getElementById('res-detalhe-descontos');
+            if (extra > 0) {
+                detalhe.innerHTML = `(${percentual.toFixed(1).replace('.', ',')}% + cupom de ${extra.toFixed(1).replace('.', ',')}%)`;
+            } else {
+                detalhe.innerHTML = `(${percentual.toFixed(1).replace('.', ',')}% sobre o preço original)`;
+            }
+
+            const obs = document.getElementById('res-observacao');
+            obs.textContent = `Com essa oferta, você economiza ${formatarMoeda(valorTotalDesconto)} em relação ao preço original.`;
+
+            document.getElementById('placeholderResultado').style.display = 'none';
+            document.getElementById('resultadoDetalhado').style.display = 'block';
+        }
+    </script>
+
     <script src="dark-mode.js"></script>
     <script src="chatbot.js"></script>
     <script src="analytics_setup.js"></script>
-    
-    
 </body>
 </html>

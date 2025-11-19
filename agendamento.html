@@ -1,38 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MWSZPN3GD0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MWSZPN3GD0');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento Online - The GameHub</title>
-    
+    <title>Agendar Atendimento - The GameHub</title>
+
     <!-- CSS do Projeto -->
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dark-mode.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="cookie_consent.css">
+    <!-- CSS específico do agendamento (se você tiver) -->
     <link rel="stylesheet" href="agendamento.css">
+
+    <!-- Widget de Chat (mesma estrutura das outras páginas) -->
+    <div class="chat-widget">
+        <div class="chat-button" id="chatButton">
+            <svg class="chat-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+            </svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+            <span class="chat-badge" id="chatBadge">1</span>
+        </div>
+
+        <!-- Janela do Chat -->
+        <div class="chat-window" id="chatWindow">
+            <!-- Header do Chat -->
+            <div class="chat-header">
+                <div class="chat-avatar">
+                    <img src="imagens/logo-branco1.png" alt="Assistente">
+                </div>
+                <div class="chat-info">
+                    <h4>The GameHub</h4>
+                    <span class="chat-status online">Online agora</span>
+                </div>
+                <div class="chat-actions">
+                    <button class="minimize-btn" id="minimizeChat">−</button>
+                    <button class="close-chat-btn" id="closeChatBtn">×</button>
+                </div>
+            </div>
+
+            <!-- Área de Mensagens -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <img src="imagens/logo-branco1.png" alt="Bot">
+                    </div>
+                    <div class="message-content">
+                        <p>Olá! 👋 Sou o assistente virtual da The GameHub. Quer ajuda para agendar um atendimento?</p>
+                        <span class="message-time">Agora</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sugestões Rápidas -->
+            <div class="quick-suggestions" id="quickSuggestions">
+                <button class="suggestion-btn" data-suggestion="horarios">📅 Horários</button>
+                <button class="suggestion-btn" data-suggestion="servicos">💼 Serviços</button>
+                <button class="suggestion-btn" data-suggestion="contato">📞 Contato</button>
+                <button class="suggestion-btn" data-suggestion="localizacao">📍 Localização</button>
+            </div>
+
+            <!-- Área de Input -->
+            <div class="chat-input-area">
+                <div class="chat-input-container">
+                    <input type="text" id="chatInput" placeholder="Digite sua mensagem..." maxlength="500">
+                    <button class="send-btn" id="sendBtn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="chat-footer">
+                    <span class="typing-indicator" id="typingIndicator" style="display: none;">
+                        <span></span><span></span><span></span>
+                        Digitando...
+                    </span>
+                    <button class="whatsapp-btn" id="whatsappBtn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.53 3.488"/>
+                        </svg>
+                        Continuar no WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notificação de Nova Mensagem -->
+        <div class="chat-notification" id="chatNotification" style="display: none;">
+            <div class="notification-content">
+                <strong>Nova mensagem!</strong>
+                <p>O assistente respondeu sua pergunta</p>
+            </div>
+        </div>
+    </div>
 </head>
+
 <body>
+    <!-- HEADER igual ao de produtos.html -->
     <header>
         <div class="caixa">
-            <h1><img src="imagens/logo-branco1.png" alt="Logo The GameHub"></h1>
+            <h1>
+                <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
+            </h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
                     <li><a href="galeria.html">Galeria</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="mapa.html">Localização</a></li>
+                    <li><a href="agendamento.html">Agendar</a></li>
                     <li><a href="calculadora.html">Calculadora</a></li>
-                    
-                    <li><a href="contato.html">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <h2 class="titulo-principal-produtos">Agendamento Online</h2>
+        <h2 class="titulo-principal-produtos">Agendar Atendimento na The GameHub</h2>
 
-        <!-- Progress Bar -->
+        <!-- BARRA DE PROGRESSO -->
         <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress-step active" data-step="1">
@@ -54,58 +156,66 @@
             </div>
         </div>
 
-        <!-- Container Principal -->
+        <!-- CONTEÚDO PRINCIPAL DO AGENDAMENTO -->
         <div class="agendamento-container">
             <!-- ETAPA 1: Seleção de Serviço -->
             <div class="etapa active" id="etapa1">
-                <h3>Escolha o Serviço</h3>
-                <p class="etapa-descricao">Selecione o serviço que deseja agendar</p>
+                <h3>Escolha o tipo de atendimento</h3>
+                <p class="etapa-descricao">
+                    Selecione o serviço que você deseja agendar em nossa central gamer.
+                </p>
 
                 <div class="servicos-grid">
-                    <!-- Serviço 1 - PERSONALIZE -->
-                    <div class="servico-card" data-servico="servico1" data-duracao="60" data-preco="80.00">
-                        <div class="servico-icon">💼</div>
-                        <h4>Serviço 1</h4>
-                        <p class="servico-descricao">Descrição do serviço 1</p>
+                    <!-- Serviço 1 -->
+                    <div class="servico-card" data-servico="pc_gamer" data-duracao="60" data-preco="120.00">
+                        <div class="servico-icon">🖥️</div>
+                        <h4>Configuração / Upgrade de PC Gamer</h4>
+                        <p class="servico-descricao">
+                            Montagem, upgrade e otimização do seu setup para rodar seus jogos favoritos no máximo.
+                        </p>
                         <div class="servico-info">
                             <span class="servico-duracao">⏱️ 60 min</span>
-                            <span class="servico-preco">R$ 80,00</span>
-                        </div>
-                        <button class="btn-selecionar" onclick="selecionarServico(this)">Selecionar</button>
-                    </div>
-
-                    <!-- Serviço 2 - PERSONALIZE -->
-                    <div class="servico-card" data-servico="servico2" data-duracao="90" data-preco="120.00">
-                        <div class="servico-icon">⭐</div>
-                        <h4>Serviço 2</h4>
-                        <p class="servico-descricao">Descrição do serviço 2</p>
-                        <div class="servico-info">
-                            <span class="servico-duracao">⏱️ 90 min</span>
                             <span class="servico-preco">R$ 120,00</span>
                         </div>
                         <button class="btn-selecionar" onclick="selecionarServico(this)">Selecionar</button>
                     </div>
 
-                    <!-- Serviço 3 - PERSONALIZE -->
-                    <div class="servico-card" data-servico="servico3" data-duracao="30" data-preco="50.00">
-                        <div class="servico-icon">🎯</div>
-                        <h4>Serviço 3</h4>
-                        <p class="servico-descricao">Descrição do serviço 3</p>
+                    <!-- Serviço 2 -->
+                    <div class="servico-card" data-servico="console" data-duracao="45" data-preco="90.00">
+                        <div class="servico-icon">🎮</div>
+                        <h4>Diagnóstico e Manutenção de Console</h4>
+                        <p class="servico-descricao">
+                            Verificação geral, limpeza e diagnóstico de consoles (Xbox, PlayStation, Nintendo).
+                        </p>
                         <div class="servico-info">
-                            <span class="servico-duracao">⏱️ 30 min</span>
-                            <span class="servico-preco">R$ 50,00</span>
+                            <span class="servico-duracao">⏱️ 45 min</span>
+                            <span class="servico-preco">R$ 90,00</span>
                         </div>
                         <button class="btn-selecionar" onclick="selecionarServico(this)">Selecionar</button>
                     </div>
 
-                    <!-- Adicione mais serviços conforme necessário -->
+                    <!-- Serviço 3 -->
+                    <div class="servico-card" data-servico="consultoria" data-duracao="30" data-preco="60.00">
+                        <div class="servico-icon">💡</div>
+                        <h4>Consultoria de Setup Gamer</h4>
+                        <p class="servico-descricao">
+                            Ajuda para escolher peças, periféricos, monitores e montar o setup ideal para o seu orçamento.
+                        </p>
+                        <div class="servico-info">
+                            <span class="servico-duracao">⏱️ 30 min</span>
+                            <span class="servico-preco">R$ 60,00</span>
+                        </div>
+                        <button class="btn-selecionar" onclick="selecionarServico(this)">Selecionar</button>
+                    </div>
                 </div>
             </div>
 
             <!-- ETAPA 2: Seleção de Data e Hora -->
             <div class="etapa" id="etapa2">
-                <h3>Escolha Data e Horário</h3>
-                <p class="etapa-descricao">Selecione o dia e horário de sua preferência</p>
+                <h3>Escolha data e horário</h3>
+                <p class="etapa-descricao">
+                    Selecione o dia e o horário que melhor se encaixa na sua rotina.
+                </p>
 
                 <div class="calendario-horario-container">
                     <!-- Calendário -->
@@ -125,18 +235,18 @@
                             <div>Sáb</div>
                         </div>
                         <div class="calendario-dias" id="calendarioDias">
-                            <!-- Dias serão gerados pelo JavaScript -->
+                            <!-- Dias gerados via JavaScript -->
                         </div>
                     </div>
 
                     <!-- Horários Disponíveis -->
                     <div class="horarios-wrapper">
-                        <h4>Horários Disponíveis</h4>
+                        <h4>Horários disponíveis</h4>
                         <div class="horarios-info">
                             <p id="dataSelcionadaTexto">Selecione uma data no calendário</p>
                         </div>
                         <div class="horarios-grid" id="horariosGrid">
-                            <!-- Horários serão gerados pelo JavaScript -->
+                            <!-- Horários gerados via JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -149,13 +259,15 @@
 
             <!-- ETAPA 3: Dados do Cliente -->
             <div class="etapa" id="etapa3">
-                <h3>Seus Dados</h3>
-                <p class="etapa-descricao">Preencha suas informações para confirmar o agendamento</p>
+                <h3>Seus dados</h3>
+                <p class="etapa-descricao">
+                    Preencha seus dados para confirmarmos o seu agendamento.
+                </p>
 
                 <form class="form-dados" id="formDados">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="nome">Nome Completo *</label>
+                            <label for="nome">Nome completo *</label>
                             <input type="text" id="nome" required placeholder="Seu nome completo">
                         </div>
                         <div class="form-group">
@@ -166,7 +278,7 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="telefone">Telefone/WhatsApp *</label>
+                            <label for="telefone">Telefone / WhatsApp *</label>
                             <input type="tel" id="telefone" required placeholder="(00) 00000-0000">
                         </div>
                         <div class="form-group">
@@ -177,7 +289,7 @@
 
                     <div class="form-group">
                         <label for="observacoes">Observações (opcional)</label>
-                        <textarea id="observacoes" rows="4" placeholder="Alguma informação adicional que gostaria de compartilhar..."></textarea>
+                        <textarea id="observacoes" rows="4" placeholder="Ex.: preferência de horário, detalhes do problema, etc."></textarea>
                     </div>
 
                     <div class="form-group checkbox-group">
@@ -200,21 +312,23 @@
                         <label class="checkbox-label">
                             <input type="checkbox" id="lembretes">
                             <span class="checkbox-custom"></span>
-                            Desejo receber lembretes por WhatsApp/E-mail
+                            Desejo receber lembretes por WhatsApp / E-mail
                         </label>
                     </div>
                 </form>
 
                 <div class="etapa-navegacao">
                     <button class="btn-voltar" onclick="voltarEtapa()">← Voltar</button>
-                    <button class="btn-proximo" onclick="proximaEtapa()">Revisar Agendamento →</button>
+                    <button class="btn-proximo" onclick="proximaEtapa()">Revisar agendamento →</button>
                 </div>
             </div>
 
             <!-- ETAPA 4: Confirmação -->
             <div class="etapa" id="etapa4">
-                <h3>Confirmar Agendamento</h3>
-                <p class="etapa-descricao">Revise suas informações antes de confirmar</p>
+                <h3>Revisar e confirmar</h3>
+                <p class="etapa-descricao">
+                    Confira se está tudo certo antes de finalizar seu agendamento.
+                </p>
 
                 <div class="resumo-agendamento">
                     <div class="resumo-card">
@@ -252,7 +366,7 @@
                     <div class="resumo-card">
                         <div class="resumo-icon">💰</div>
                         <div class="resumo-info">
-                            <span class="resumo-label">Valor</span>
+                            <span class="resumo-label">Valor estimado</span>
                             <span class="resumo-valor" id="resumoValor">-</span>
                         </div>
                     </div>
@@ -271,22 +385,22 @@
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
                         </svg>
-                        <p>Você receberá uma confirmação por e-mail e WhatsApp com os detalhes do agendamento.</p>
+                        <p>Você receberá a confirmação do agendamento por e-mail e/ou WhatsApp com todos os detalhes.</p>
                     </div>
 
                     <div class="politica-cancelamento">
-                        <h4>Política de Cancelamento</h4>
+                        <h4>Política de cancelamento</h4>
                         <ul>
-                            <li>Cancelamento gratuito até 24h antes do horário agendado</li>
-                            <li>Reagendamento disponível até 12h antes</li>
-                            <li>Em caso de atraso, aguardaremos por 15 minutos</li>
+                            <li>Cancelamento gratuito até 24h antes do horário agendado;</li>
+                            <li>Reagendamento disponível até 12h antes;</li>
+                            <li>Em caso de atraso, aguardaremos por até 15 minutos.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="etapa-navegacao">
                     <button class="btn-voltar" onclick="voltarEtapa()">← Voltar</button>
-                    <button class="btn-confirmar" onclick="confirmarAgendamento()">✓ Confirmar Agendamento</button>
+                    <button class="btn-confirmar" onclick="confirmarAgendamento()">✓ Confirmar agendamento</button>
                 </div>
             </div>
 
@@ -294,22 +408,24 @@
             <div class="modal-sucesso" id="modalSucesso">
                 <div class="modal-content">
                     <div class="sucesso-icon">✓</div>
-                    <h3>Agendamento Confirmado!</h3>
-                    <p>Seu agendamento foi realizado com sucesso.</p>
+                    <h3>Agendamento confirmado!</h3>
+                    <p>Seu atendimento na The GameHub foi agendado com sucesso.</p>
                     <div class="sucesso-codigo">
-                        <span>Código de Confirmação:</span>
+                        <span>Código de confirmação:</span>
                         <strong id="codigoConfirmacao">AG-00000</strong>
                     </div>
-                    <p class="sucesso-info">Enviamos uma confirmação para seu e-mail e WhatsApp com todos os detalhes.</p>
+                    <p class="sucesso-info">
+                        Enviamos uma confirmação para seu e-mail / WhatsApp com todos os detalhes.
+                    </p>
                     <div class="sucesso-acoes">
                         <button class="btn-adicionar-calendario" onclick="adicionarCalendario()">
-                            📅 Adicionar ao Calendário
+                            📅 Adicionar ao calendário
                         </button>
                         <button class="btn-novo-agendamento" onclick="novoAgendamento()">
-                            🔄 Novo Agendamento
+                            🔄 Novo agendamento
                         </button>
                         <button class="btn-voltar-home" onclick="window.location.href='index.html'">
-                            🏠 Voltar ao Início
+                            🏠 Voltar ao início
                         </button>
                     </div>
                 </div>
@@ -318,23 +434,23 @@
 
         <!-- Seção de Ajuda -->
         <section class="ajuda-section">
-            <h3>Precisa de Ajuda?</h3>
+            <h3>Precisa de ajuda com o agendamento?</h3>
             <div class="ajuda-grid">
                 <div class="ajuda-card">
                     <div class="ajuda-icon">📞</div>
                     <h4>Atendimento</h4>
-                    <p>Ligue: (41) 3333-4444</p>
-                    <p>WhatsApp: (41) 99999-8888</p>
+                    <p>Ligue: (45) 988166951</p>
+                    <p>WhatsApp: (45) 988166951</p>
                 </div>
                 <div class="ajuda-card">
                     <div class="ajuda-icon">❓</div>
-                    <h4>Dúvidas Frequentes</h4>
+                    <h4>Dúvidas frequentes</h4>
                     <p>Consulte nossa <a href="contato.html">página de FAQ</a></p>
                 </div>
                 <div class="ajuda-card">
                     <div class="ajuda-icon">🕒</div>
-                    <h4>Horário de Funcionamento</h4>
-                    <p>Seg-Sex: 8h às 18h</p>
+                    <h4>Horário de funcionamento</h4>
+                    <p>Seg–Sex: 8h às 18h</p>
                     <p>Sáb: 8h às 14h</p>
                 </div>
             </div>
@@ -344,9 +460,15 @@
     <footer>
         <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
         <p class="copyright">&copy; Copyright The GameHub - 2025</p>
+        <a href="faq-section.html">Perguntas Frequentes</a>
     </footer>
 
-    <!-- Script do Agendamento -->
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="dark-mode.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="analytics_setup.js"></script>
+    <!-- Script específico do agendamento -->
     <script src="agendamento.js"></script>
 </body>
 </html>

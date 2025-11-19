@@ -9,28 +9,118 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mapa.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="dark-mode.css">
     
     <!-- Leaflet CSS - Biblioteca de Mapas -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <div class="chat-widget">
+    <div class="chat-button" id="chatButton">
+        <svg class="chat-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+        </svg>
+        <svg class="close-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+        <span class="chat-badge" id="chatBadge">1</span>
+    </div>
+
+    <!-- Janela do Chat -->
+    <div class="chat-window" id="chatWindow">
+        <!-- Header do Chat -->
+        <div class="chat-header">
+            <div class="chat-avatar">
+                <img src="imagens/logo-branco1.png" alt="Assistente">
+            </div>
+            <div class="chat-info">
+                <h4>The GameHub</h4>
+                <span class="chat-status online">Online agora</span>
+            </div>
+            <div class="chat-actions">
+                <button class="minimize-btn" id="minimizeChat">−</button>
+                <button class="close-chat-btn" id="closeChatBtn">×</button>
+            </div>
+        </div>
+
+        <!-- Área de Mensagens -->
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">
+                    <img src="imagens/logo-branco1.png" alt="Bot">
+                </div>
+                <div class="message-content">
+                    <p>Olá! 👋 Sou o assistente virtual da The GameHub. Como posso ajudá-lo hoje?</p>
+                    <span class="message-time">Agora</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sugestões Rápidas -->
+        <div class="quick-suggestions" id="quickSuggestions">
+            <button class="suggestion-btn" data-suggestion="horarios">📅 Horários</button>
+            <button class="suggestion-btn" data-suggestion="servicos">💼 Serviços</button>
+            <button class="suggestion-btn" data-suggestion="contato">📞 Contato</button>
+            <button class="suggestion-btn" data-suggestion="localizacao">📍 Localização</button>
+        </div>
+
+        <!-- Área de Input -->
+        <div class="chat-input-area">
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Digite sua mensagem..." maxlength="500">
+                <button class="send-btn" id="sendBtn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="chat-footer">
+                <span class="typing-indicator" id="typingIndicator" style="display: none;">
+                    <span></span><span></span><span></span>
+                    Digitando...
+                </span>
+                <button class="whatsapp-btn" id="whatsappBtn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.53 3.488"/>
+                    </svg>
+                    Continuar no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificação de Nova Mensagem -->
+    <div class="chat-notification" id="chatNotification" style="display: none;">
+        <div class="notification-content">
+            <strong>Nova mensagem!</strong>
+            <p>O assistente respondeu sua pergunta</p>
+        </div>
+    </div>
+</div>
+    
 </head>
 <body>
-    <header>
-        <div class="caixa">
-            <h1><img src="imagens/logo-branco1.png" alt="Logo The GameHub"></h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="galeria.html">Galeria</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><a href="agendamento.html">Agendar</a></li>
-                    <li><a href="calculadora.html">Calculadora</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+
+    
+     <header>
+  <div class="caixa">
+    <h1>
+      <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
+    </h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="mapa.html">Localização</a></li>
+        <li><a href="agendamento.html">Agendar</a></li>
+        <li><a href="calculadora.html">Calculadora</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
     <main>
         <h2 class="titulo-principal-produtos">Como Chegar</h2>
@@ -88,48 +178,44 @@
         </div>
 
         <!-- Cards de Localização -->
+               <!-- Cards de Localização -->
         <section class="localizacoes-disponiveis">
-            <h3>Nossas Unidades</h3>
+            <h3>Nosso Endereço</h3>
             <div class="localizacoes-grid">
-                <!-- Unidade 1 - PERSONALIZE -->
-                <div class="local-card" data-lat="-25.4284" data-lng="-49.2733" data-id="unidade1">
+
+                <!-- Única unidade disponível -->
+                <div class="local-card"
+                 data-lat="-24.9800313"
+                 data-lng="-53.5063787"
+                 data-id="unidade1">
+                    
                     <div class="local-icon">📍</div>
-                    <h4>Unidade Centro</h4>
-                    <p class="local-endereco">Rua Exemplo, 123<br>Centro - Curitiba/PR</p>
-                    <p class="local-horario">Seg-Sex: 8h-18h | Sáb: 8h-14h</p>
+                    <h4>The GameHub - Cascavel</h4>
+                    
+                    <p class="local-endereco">
+                        Rua Jade, 251<br>
+                        Cascavel - PR
+                    </p>
+
+                    <p class="local-horario">
+                        Seg-Sex: 9h às 18h | Sáb: 9h às 13h
+                    </p>
+
                     <div class="local-acoes">
                         <button class="btn-ir-mapa" data-target="unidade1">Ver no Mapa</button>
-                        <a href="tel:+5541999998888" class="btn-ligar">
+                        <a href="tel:+550000000000" class="btn-ligar">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                             </svg>
                             Ligar
                         </a>
                     </div>
+
                     <span class="distancia" data-distancia="unidade1">Calculando...</span>
                 </div>
-
-                <!-- Unidade 2 - PERSONALIZE -->
-                <div class="local-card" data-lat="-25.4195" data-lng="-49.2646" data-id="unidade2">
-                    <div class="local-icon">📍</div>
-                    <h4>Unidade Batel</h4>
-                    <p class="local-endereco">Av. do Batel, 456<br>Batel - Curitiba/PR</p>
-                    <p class="local-horario">Seg-Sex: 9h-19h | Sáb: 9h-15h</p>
-                    <div class="local-acoes">
-                        <button class="btn-ir-mapa" data-target="unidade2">Ver no Mapa</button>
-                        <a href="tel:+5541888887777" class="btn-ligar">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                            </svg>
-                            Ligar
-                        </a>
-                    </div>
-                    <span class="distancia" data-distancia="unidade2">Calculando...</span>
-                </div>
-
-                <!-- Adicione mais unidades conforme necessário -->
             </div>
         </section>
+
 
         <!-- Instruções de Acesso -->
         <section class="instrucoes-acesso">
@@ -138,12 +224,12 @@
                 <div class="instrucao-item">
                     <div class="instrucao-icon">🚗</div>
                     <h4>De Carro</h4>
-                    <p>Estacionamento próprio disponível. Acesso fácil pela [NOME DA VIA PRINCIPAL].</p>
+                    <p>Estacionamento próprio disponível. Acesso fácil pela Rua Tito Muffato.</p>
                 </div>
                 <div class="instrucao-item">
                     <div class="instrucao-icon">🚌</div>
                     <h4>Transporte Público</h4>
-                    <p>Linhas de ônibus: [NÚMEROS DAS LINHAS]. Ponto em frente ao estabelecimento.</p>
+                    <p>Linhas de ônibus: 10. Ponto em frente ao estabelecimento.</p>
                 </div>
                 <div class="instrucao-item">
                     <div class="instrucao-icon">🚶</div>
@@ -153,21 +239,28 @@
                 <div class="instrucao-item">
                     <div class="instrucao-icon">🅿️</div>
                     <h4>Estacionamento</h4>
-                    <p>Vagas gratuitas para clientes. [XX] vagas disponíveis.</p>
+                    <p>Vagas gratuitas para clientes. 50 vagas disponíveis.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+   <footer>
         <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
         <p class="copyright">&copy; Copyright The GameHub - 2025</p>
+        <a href="faq-section.html">Perguntas Frequentes</a>
     </footer>
 
     <!-- Leaflet JS - Biblioteca de Mapas -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     
-    <!-- Script do Mapa -->
+   <!-- Scripts gerais do site -->
+    <script src="script.js"></script>
+    <script src="dark-mode.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="analytics_setup.js"></script>
+
+    <!-- Script específico do mapa -->
     <script src="mapa.js"></script>
 </body>
 </html>

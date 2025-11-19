@@ -106,132 +106,141 @@
 </head>
 
 <body>
-    <header>
-        <div class="caixa">
-            <h1><img src="imagens/logo-branco1.png" alt="Logo TheGameHub"></h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                    
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="mapa.html">Localização</a></li>
-                    <li><a href="agendamento.html">Agendar</a></li>
-                    <li><a href="calculadora.html">Calculadora</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+     <header>
+  <div class="caixa">
+    <h1>
+      <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
+    </h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="mapa.html">Localização</a></li>
+        <li><a href="agendamento.html">Agendar</a></li>
+        <li><a href="calculadora.html">Calculadora</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <main>
-        <h2 class="titulo-principal-produtos">Nossa Galeria</h2>
+   <main>
+    <h2 class="titulo-principal-produtos">Galeria de Games & Artes</h2>
 
-        <!-- Filtros da Galeria -->
-        <div class="filtros-galeria">
-            <button class="filtro-btn ativo" data-filtro="todos">Todos</button>
-            <button class="filtro-btn" data-filtro="categoria1">[CATEGORIA 1]</button>
-            <button class="filtro-btn" data-filtro="categoria2">[CATEGORIA 2]</button>
-            <button class="filtro-btn" data-filtro="categoria3">[CATEGORIA 3]</button>
-        </div>
+    <!-- Filtros da Galeria -->
+    <div class="filtros-galeria">
+        <button class="filtro-btn ativo" data-filtro="todos">Todos</button>
+        <button class="filtro-btn" data-filtro="screenshots">Screenshots</button>
+        <button class="filtro-btn" data-filtro="conceito">Artes Conceituais</button>
+        <button class="filtro-btn" data-filtro="colecionaveis">Colecionáveis</button>
+    </div>
 
-        <!-- Grid de Imagens -->
-        <div class="galeria-grid">
-            <!-- Item 1 -->
-            <div class="galeria-item" data-categoria="categoria1">
-                <img src="imagens/galeria1.jpg" alt="[DESCRIÇÃO IMAGEM 1]">
-                <div class="galeria-overlay">
-                    <h3>[TÍTULO 1]</h3>
-                    <p>[DESCRIÇÃO BREVE 1]</p>
-                    <button class="btn-ver-mais">Ver Detalhes</button>
-                </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="galeria-item" data-categoria="categoria2">
-                <img src="imagens/galeria2.jpg" alt="[DESCRIÇÃO IMAGEM 2]">
-                <div class="galeria-overlay">
-                    <h3>[TÍTULO 2]</h3>
-                    <p>[DESCRIÇÃO BREVE 2]</p>
-                    <button class="btn-ver-mais">Ver Detalhes</button>
-                </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="galeria-item galeria-item-grande" data-categoria="categoria1">
-                <img src="imagens/galeria3.jpg" alt="[DESCRIÇÃO IMAGEM 3]">
-                <div class="galeria-overlay">
-                    <h3>[TÍTULO 3]</h3>
-                    <p>[DESCRIÇÃO BREVE 3]</p>
-                    <button class="btn-ver-mais">Ver Detalhes</button>
-                </div>
-            </div>
-
-            <!-- Item 4 -->
-            <div class="galeria-item" data-categoria="categoria3">
-                <img src="imagens/galeria4.jpg" alt="[DESCRIÇÃO IMAGEM 4]">
-                <div class="galeria-overlay">
-                    <h3>[TÍTULO 4]</h3>
-                    <p>[DESCRIÇÃO BREVE 4]</p>
-                    <button class="btn-ver-mais">Ver Detalhes</button>
-                </div>
-            </div>
-
-            <!-- Item 5 -->
-            <div class="galeria-item" data-categoria="categoria2">
-                <img src="imagens/galeria5.jpg" alt="[DESCRIÇÃO IMAGEM 5]">
-                <div class="galeria-overlay">
-                    <h3>[TÍTULO 5]</h3>
-                    <p>[DESCRIÇÃO BREVE 5]</p>
-                    <button class="btn-ver-mais">Ver Detalhes</button>
-                </div>
-            </div>
-
-            <!-- Item 6 -->
-            <div class="galeria-item" data-categoria="categoria3">
-                <img src="imagens/galeria6.jpg" alt="[DESCRIÇÃO IMAGEM 6]">
-                <div class="galeria-overlay">
-                    <h3>[TÍTULO 6]</h3>
-                    <p>[DESCRIÇÃO BREVE 6]</p>
-                    <button class="btn-ver-mais">Ver Detalhes</button>
-                </div>
+    <!-- Grid de Imagens -->
+    <div class="galeria-grid">
+        
+        <!-- Item 1 -->
+        <div class="galeria-item" data-categoria="screenshots">
+            <img src="imagens/gameplayCJ.png" alt="Cena de gameplay de Cyber Junkies">
+            <div class="galeria-overlay">
+                <h3>Cyber Junkies – Gameplay</h3>
+                <p>Ação frenética em um mundo caótico dominado por megacorporações.</p>
+                <button class="btn-ver-mais">Ver Detalhes</button>
             </div>
         </div>
 
-        <!-- Modal/Lightbox -->
-        <div class="modal-galeria" id="modalGaleria">
-            <span class="fechar-modal">&times;</span>
-            <img class="modal-conteudo" id="modalImagem">
-            <div class="modal-caption" id="modalCaption"></div>
-            <div class="modal-navegacao">
-                <button class="nav-btn prev">❮ Anterior</button>
-                <button class="nav-btn next">Próximo ❯</button>
+        <!-- Item 2 -->
+        <div class="galeria-item" data-categoria="conceito">
+            <img src="imagens/arte conceitual.png" alt="Arte conceitual de Dark Reign">
+            <div class="galeria-overlay">
+                <h3>Dark Reign – Arte Conceitual</h3>
+                <p>Visuais sombrios que inspiraram o design do reino arruinado.</p>
+                <button class="btn-ver-mais">Ver Detalhes</button>
             </div>
         </div>
 
-        <!-- Seção de Estatísticas -->
-        <section class="estatisticas">
-            <h3>Nossos Números</h3>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-numero" data-target="150">0</span>
-                    <span class="stat-label">Projetos Realizados</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-numero" data-target="98">0</span>
-                    <span class="stat-label">Clientes Satisfeitos</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-numero" data-target="5">0</span>
-                    <span class="stat-label">Anos de Experiência</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-numero" data-target="24">0</span>
-                    <span class="stat-label">Prêmios Recebidos</span>
-                </div>
+        <!-- Item 3 -->
+        <div class="galeria-item galeria-item-grande" data-categoria="screenshots">
+            <img src="imagens/gameplay astrophobia.png" alt="Cena expandida do jogo Astrophobia">
+            <div class="galeria-overlay">
+                <h3>Astrophobia – Deep Space</h3>
+                <p>Um vislumbre do horror cósmico escondido entre as estrelas.</p>
+                <button class="btn-ver-mais">Ver Detalhes</button>
             </div>
-        </section>
-    </main>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="galeria-item" data-categoria="colecionaveis">
+            <img src="imagens/colecionaveis.png" alt="Colecionáveis exclusivos da GameHub">
+            <div class="galeria-overlay">
+                <h3>Colecionáveis Exclusivos</h3>
+                <p>Itens raros disponíveis apenas para membros da comunidade.</p>
+                <button class="btn-ver-mais">Ver Detalhes</button>
+            </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="galeria-item" data-categoria="conceito">
+            <img src="imagens/arte conceitual novo.png" alt="Proposta visual inicial de novos projetos">
+            <div class="galeria-overlay">
+                <h3>Conceito Visual – Novo Projeto</h3>
+                <p>Primeiros rascunhos de universo para um game em desenvolvimento.</p>
+                <button class="btn-ver-mais">Ver Detalhes</button>
+            </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="galeria-item" data-categoria="colecionaveis">
+            <img src="imagens/estatueta.png" alt="Estatueta colecionável de personagem icônico">
+            <div class="galeria-overlay">
+                <h3>Estatueta Premium</h3>
+                <p>Peça detalhada criada para colecionadores apaixonados.</p>
+                <button class="btn-ver-mais">Ver Detalhes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal/Lightbox -->
+    <div class="modal-galeria" id="modalGaleria">
+        <span class="fechar-modal">&times;</span>
+        <img class="modal-conteudo" id="modalImagem">
+        <div class="modal-caption" id="modalCaption"></div>
+        <div class="modal-navegacao">
+            <button class="nav-btn prev">❮ Anterior</button>
+            <button class="nav-btn next">Próximo ❯</button>
+        </div>
+    </div>
+
+    <!-- Seção de Estatísticas -->
+    <section class="estatisticas">
+        <h3>A Comunidade GameHub em Números</h3>
+        <div class="stats-grid">
+
+            <div class="stat-item">
+                <span class="stat-numero" data-target="250">0</span>
+                <span class="stat-label">Games no Catálogo</span>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-numero" data-target="3500">0</span>
+                <span class="stat-label">Membros da Comunidade</span>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-numero" data-target="120">0</span>
+                <span class="stat-label">Itens Colecionáveis</span>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-numero" data-target="50">0</span>
+                <span class="stat-label">Eventos Realizados</span>
+            </div>
+
+        </div>
+    </section>
+</main>
+
 
     <footer>
         <img src="imagens/logo-branco1.png" alt="Logo [SEU NEGÓCIO]">

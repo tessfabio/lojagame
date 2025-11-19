@@ -106,172 +106,202 @@
 
 </head>
 <body>
-    <header>
-        <div class="caixa">
-            <h1><img src="imagens/logo-branco1.png" alt="Logo "></h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
-                    <li><a href="galeria.html">Galeria</a></li>
-                    <!--<li><a href="chatbot.html"></a></li>-->
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><a href="mapa.html">Localização</a></li>
-                    <li><a href="agendamento.html">Agendar</a></li>
-                    <li><a href="calculadora.html">Calculadora</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+     <header>
+  <div class="caixa">
+    <h1>
+      <img src="imagens/logo-branco1.png" alt="Logo The GameHub">
+    </h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="mapa.html">Localização</a></li>
+        <li><a href="agendamento.html">Agendar</a></li>
+        <li><a href="calculadora.html">Calculadora</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
     <main>
-        <!-- Hero Section do Blog -->
-        <section class="blog-hero">
-            <div class="hero-content">
-                <h1>Nosso Blog</h1>
-                <p>Fique por dentro das novidades, dicas e tendências do nosso setor</p>
-            </div>
-        </section>
+    <!-- Hero Section do Blog -->
+    <section class="blog-hero">
+        <div class="hero-content">
+            <h1>Blog The GameHub</h1>
+            <p>Tutoriais, dicas e novidades do universo gamer e da tecnologia</p>
+        </div>
+    </section>
 
-        <!-- Barra de Pesquisa e Filtros -->
-        <section class="blog-controles">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Pesquisar artigos..." class="search-input">
-                <button class="search-btn">🔍</button>
-            </div>
-            
-            <div class="filtros-blog">
-                <button class="filtro-blog ativo" data-categoria="todas">Todas</button>
-                <button class="filtro-blog" data-categoria="dicas">Dicas</button>
-                <button class="filtro-blog" data-categoria="novidades">Novidades</button>
-                <button class="filtro-blog" data-categoria="tutoriais">Tutoriais</button>
-            </div>
-        </section>
+    <!-- Barra de Pesquisa e Filtros -->
+    <section class="blog-controles">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Pesquisar artigos..." class="search-input">
+            <button class="search-btn">🔍</button>
+        </div>
+        
+        <div class="filtros-blog">
+            <button class="filtro-blog ativo" data-categoria="todas">Todas</button>
+            <button class="filtro-blog" data-categoria="dicas">Dicas</button>
+            <button class="filtro-blog" data-categoria="novidades">Novidades</button>
+            <button class="filtro-blog" data-categoria="tutoriais">Tutoriais</button>
+        </div>
+    </section>
 
-        <!-- Grade de Artigos -->
-        <section class="blog-grid">
-            <!-- Artigo em Destaque -->
-            <article class="artigo-destaque" data-categoria="dicas">
-                <div class="artigo-imagem">
-                    <img src="imagens/blog1.jpg" alt="[TÍTULO ARTIGO 1]">
-                    <span class="artigo-tag">Em Destaque</span>
+    <!-- Grade de Artigos -->
+    <section class="blog-grid">
+
+        <!-- Artigo em Destaque (DICAS) -->
+        <article class="artigo-destaque" data-categoria="dicas">
+            <div class="artigo-imagem">
+                <img src="imagens/medieval.png" alt="Dicas essenciais para Skyrim">
+                <span class="artigo-tag">Em Destaque</span>
+            </div>
+
+            <div class="artigo-conteudo">
+                <div class="artigo-meta">
+                    <span class="categoria">Dicas</span>
+                    <span class="data">10 Nov 2024</span>
+                    <span class="tempo-leitura">6 min</span>
                 </div>
+
+                <h2>Skyrim: dicas essenciais para quem está começando</h2>
+                <p>Como evoluir mais rápido, administrar seu inventário e sobreviver aos desafios de Tamriel com técnicas úteis para iniciantes.</p>
+
+                <div class="artigo-autor">
+                    <img src="imagens/logo.jpg" alt="Equipe The GameHub">
+                    <div>
+                        <span class="autor-nome">Equipe The GameHub</span>
+                        <span class="autor-cargo">Redação</span>
+                    </div>
+                </div>
+
+                <a href="https://aminoapps.com/c/theelderscrollsbrasil/page/blog/skyrim-dicas-uteis-para-novatos/JExP_XDFdulxDqlXnja7xBjQN65q4Qjz2K"
+                   target="_blank" class="btn-ler-mais">Ler Artigo</a>
+            </div>
+        </article>
+
+        <!-- Outros Artigos -->
+        <div class="artigos-container">
+
+            <!-- NOVIDADES – GTA 6 -->
+            <article class="artigo-card" data-categoria="novidades">
+                <div class="artigo-imagem">
+                    <img src="imagens/gta6.jpeg" alt="Novidades sobre GTA 6">
+                </div>
+
                 <div class="artigo-conteudo">
                     <div class="artigo-meta">
-                        <span class="categoria">Dicas</span>
-                        <span class="data">15 Nov 2024</span>
-                        <span class="tempo-leitura">5 min</span>
+                        <span class="categoria">Novidades</span>
+                        <span class="data">14 Nov 2024</span>
+                        <span class="tempo-leitura">3 min</span>
                     </div>
-                    <h2>[TÍTULO DO ARTIGO 1]</h2>
-                    <p>[RESUMO DO ARTIGO 1 - Ex: Descubra as principais dicas para melhorar seus resultados e alcançar seus objetivos de forma mais eficiente...]</p>
-                    <div class="artigo-autor">
-                        <img src="imagens/autor.jpg" alt="Autor">
-                        <div>
-                            <span class="autor-nome">[NOME AUTOR]</span>
-                            <span class="autor-cargo">[CARGO AUTOR]</span>
-                        </div>
-                    </div>
-                    <button class="btn-ler-mais">Ler Mais</button>
+
+                    <h3>GTA 6: novidades e tecnologias avançadas reveladas</h3>
+                    <p>Novas informações destacam gráficos renovados, IA aprimorada e mecânicas inovadoras que prometem revolucionar a franquia.</p>
+
+                    <a href="https://www.worten.pt/novidades-tecnologicas/novidades-gta-6"
+                       target="_blank" class="btn-ler-mais">Ler Matéria</a>
                 </div>
             </article>
 
-            <!-- Container dos Artigos Normais -->
-            <div class="artigos-container">
-                <!-- Artigo 2 -->
-                <article class="artigo-card" data-categoria="novidades">
-                    <div class="artigo-imagem">
-                        <img src="imagens/blog2.jpg" alt="[TÍTULO ARTIGO 2]">
-                    </div>
-                    <div class="artigo-conteudo">
-                        <div class="artigo-meta">
-                            <span class="categoria">Novidades</span>
-                            <span class="data">10 Nov 2024</span>
-                            <span class="tempo-leitura">3 min</span>
-                        </div>
-                        <h3>[TÍTULO DO ARTIGO 2]</h3>
-                        <p>[RESUMO DO ARTIGO 2]</p>
-                        <button class="btn-ler-mais">Ler Mais</button>
-                    </div>
-                </article>
+            <!-- TUTORIAIS – GameMaker -->
+            <article class="artigo-card" data-categoria="tutoriais">
+                <div class="artigo-imagem">
+                    <img src="imagens/gamemaker.jpeg" alt="Tutorial do GameMaker Studio">
+                </div>
 
-                <!-- Artigo 3 -->
-                <article class="artigo-card" data-categoria="tutoriais">
-                    <div class="artigo-imagem">
-                        <img src="imagens/blog3.jpg" alt="[TÍTULO ARTIGO 3]">
+                <div class="artigo-conteudo">
+                    <div class="artigo-meta">
+                        <span class="categoria">Tutoriais</span>
+                        <span class="data">12 Nov 2024</span>
+                        <span class="tempo-leitura">4 min</span>
                     </div>
-                    <div class="artigo-conteudo">
-                        <div class="artigo-meta">
-                            <span class="categoria">Tutoriais</span>
-                            <span class="data">5 Nov 2024</span>
-                            <span class="tempo-leitura">7 min</span>
-                        </div>
-                        <h3>[TÍTULO DO ARTIGO 3]</h3>
-                        <p>[RESUMO DO ARTIGO 3]</p>
-                        <button class="btn-ler-mais">Ler Mais</button>
-                    </div>
-                </article>
 
-                <!-- Artigo 4 -->
-                <article class="artigo-card" data-categoria="dicas">
-                    <div class="artigo-imagem">
-                        <img src="imagens/blog1.jpg" alt="[TÍTULO ARTIGO 4]">
-                    </div>
-                    <div class="artigo-conteudo">
-                        <div class="artigo-meta">
-                            <span class="categoria">Dicas</span>
-                            <span class="data">1 Nov 2024</span>
-                            <span class="tempo-leitura">4 min</span>
-                        </div>
-                        <h3>[TÍTULO DO ARTIGO 4]</h3>
-                        <p>[RESUMO DO ARTIGO 4]</p>
-                        <button class="btn-ler-mais">Ler Mais</button>
-                    </div>
-                </article>
+                    <h3>Como criar seu primeiro jogo no GameMaker Studio</h3>
+                    <p>Um guia completo para dar os primeiros passos na engine, aprender lógica básica e montar sua primeira fase.</p>
 
-                <!-- Artigo 5 -->
-                <article class="artigo-card" data-categoria="novidades">
-                    <div class="artigo-imagem">
-                        <img src="imagens/blog2.jpg" alt="[TÍTULO ARTIGO 5]">
-                    </div>
-                    <div class="artigo-conteudo">
-                        <div class="artigo-meta">
-                            <span class="categoria">Novidades</span>
-                            <span class="data">28 Out 2024</span>
-                            <span class="tempo-leitura">6 min</span>
-                        </div>
-                        <h3>[TÍTULO DO ARTIGO 5]</h3>
-                        <p>[RESUMO DO ARTIGO 5]</p>
-                        <button class="btn-ler-mais">Ler Mais</button>
-                    </div>
-                </article>
+                    <a href="https://gamemaker.io/pt-BR/tutorials"
+                       target="_blank" class="btn-ler-mais">Acessar Tutorial</a>
+                </div>
+            </article>
 
-                <!-- Artigo 6 -->
-                <article class="artigo-card" data-categoria="tutoriais">
-                    <div class="artigo-imagem">
-                        <img src="imagens/blog3.jpg" alt="[TÍTULO ARTIGO 6]">
+            <!-- TUTORIAIS – GTA San Andreas -->
+            <article class="artigo-card" data-categoria="tutoriais">
+                <div class="artigo-imagem">
+                    <img src="imagens/gtasa.jpeg" alt="Tutoriais para GTA San Andreas">
+                </div>
+
+                <div class="artigo-conteudo">
+                    <div class="artigo-meta">
+                        <span class="categoria">Tutoriais</span>
+                        <span class="data">13 Nov 2024</span>
+                        <span class="tempo-leitura">5 min</span>
                     </div>
-                    <div class="artigo-conteudo">
-                        <div class="artigo-meta">
-                            <span class="categoria">Tutoriais</span>
-                            <span class="data">25 Out 2024</span>
-                            <span class="tempo-leitura">8 min</span>
-                        </div>
-                        <h3>[TÍTULO DO ARTIGO 6]</h3>
-                        <p>[RESUMO DO ARTIGO 6]</p>
-                        <button class="btn-ler-mais">Ler Mais</button>
+
+                    <h3>Guia de modificações para GTA San Andreas</h3>
+                    <p>Descubra como instalar mods, pacotes gráficos e ajustes para transformar o clássico da Rockstar em uma nova experiência.</p>
+
+                    <a href="https://www.gta-sa.com.br/p/tutoriais-para-gta-san-andreas.html"
+                       target="_blank" class="btn-ler-mais">Ler Tutoriais</a>
+                </div>
+            </article>
+
+            <!-- DICAS – Unity -->
+            <article class="artigo-card" data-categoria="dicas">
+                <div class="artigo-imagem">
+                    <img src="imagens/unity.jpeg" alt="Dicas para melhorar projetos na Unity">
+                </div>
+
+                <div class="artigo-conteudo">
+                    <div class="artigo-meta">
+                        <span class="categoria">Dicas</span>
+                        <span class="data">11 Nov 2024</span>
+                        <span class="tempo-leitura">7 min</span>
                     </div>
-                </article>
-            </div>
-        </section>
+
+                    <h3>Dicas práticas para melhorar seus projetos na Unity</h3>
+                    <p>Organização de assets, otimização e boas práticas utilizadas por desenvolvedores profissionais ao criar jogos na Unity.</p>
+
+                    <a href="https://unity.com/pt/how-to"
+                       target="_blank" class="btn-ler-mais">Acessar Dicas</a>
+                </div>
+            </article>
+
+            <!-- NOVIDADES – Where Winds Meet -->
+            <article class="artigo-card" data-categoria="novidades">
+                <div class="artigo-imagem">
+                    <img src="imagens/werethewinds.jpeg" alt="Where Winds Meet é um sucesso">
+                </div>
+
+                <div class="artigo-conteudo">
+                    <div class="artigo-meta">
+                        <span class="categoria">Novidades</span>
+                        <span class="data">09 Nov 2024</span>
+                        <span class="tempo-leitura">4 min</span>
+                    </div>
+
+                    <h3>Where Winds Meet se torna um fenômeno entre jogadores</h3>
+                    <p>O RPG conquista fãs pelo combate fluido, ambientação rica e forte inspiração histórica na China antiga.</p>
+
+                    <a href="https://www.gamefoxhub.com.br/noticias/where-winds-meet-e-um-sucesso"
+                       target="_blank" class="btn-ler-mais">Ler Matéria</a>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
 
         <!-- Paginação -->
-        <div class="paginacao">
+         <!-- <div class="paginacao">
             <button class="page-btn" data-page="prev">← Anterior</button>
             <button class="page-btn active" data-page="1">1</button>
             <button class="page-btn" data-page="2">2</button>
             <button class="page-btn" data-page="3">3</button>
             <button class="page-btn" data-page="next">Próximo →</button>
-        </div>
+        </div>  -->
 
         <!-- Newsletter Signup -->
         <section class="newsletter-section">
